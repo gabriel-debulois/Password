@@ -36,19 +36,18 @@ def in_password_digit():
 def h():
     h = hashlib.new('sha256')
     h.update(password.encode())
-    print(h.hexdigest())
 
 
 def check_password():
     global password
 
-    check_condition = (len(password) >= 8,
-                       in_password_punctuation(),
-                       in_password_lower(),
-                       in_password_upper(),
-                       in_password_digit())
-
     while True:
+        check_condition = (len(password) >= 8,
+                           in_password_punctuation(),
+                           in_password_lower(),
+                           in_password_upper(),
+                           in_password_digit())
+
         if all(check_condition):
             h()
             print("Mot de passe valide")
@@ -57,7 +56,7 @@ def check_password():
         else:
             print("Mot de passe invalide")
             user_input()
-            continue
+
 
 
 user_input()
